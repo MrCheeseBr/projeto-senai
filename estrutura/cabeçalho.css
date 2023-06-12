@@ -1,0 +1,25 @@
+.header{
+    background-color: rgb(62, 125, 214);
+    top: 0;
+    position: fixed;
+    width: 100%;
+    left: 0;
+}
+
+.nav li{
+    display: inline;
+    border-right: 1px solid black;
+    float: right;
+}
+
+.nav li a{
+    display: block;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+    align-content: space-between;
+    font-size: 28px;
+}
+
+
+
