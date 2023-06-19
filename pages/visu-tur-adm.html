@@ -25,6 +25,78 @@
         width: 100%;
         text-align: center;
     }
+    .conteúdo{
+            background-color: #a6a2a2;
+            width: 80%;
+            text-align: center;
+            justify-content: space-between;
+            border-radius: 10px;
+            align-items: center;
+            padding: 10px;
+            display: inline-block;
+            
+        }
+        .tabela th{
+            padding: 8px;
+            border-right: 1px solid black;
+            border-bottom: 3px solid black;
+            border-left: 1px solid black;
+            background-color: rgb(27, 189, 135);
+        }
+        .tabela td{
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+        }
+        .tabela tr:nth-child(odd){
+        background-color: beige;
+        }
+        .tabela{
+            align-items: center;
+            float: left;
+            margin-right: 15px;
+        }
+        #informações{
+          justify-content: center;
+          max-width: 30%;
+          margin-right: 15px;
+        }
+        span{
+          margin-right: 15px;
+        }
+        input{
+          height: 30px;
+        }
+        option{
+          height: 30px;
+        }
+        select{
+          height: 30px;
+        }
+        button{
+          width: 79px;
+          height: 30px;
+          padding: 5px;
+          border-radius: 5px;
+          color: white;
+          border: 0;
+          text-align: center;
+          margin-right: 5px;
+        }
+        #cancelar{
+          background-color: red;
+        }
+        #salvar{
+          background-color: #3939f0;
+        }
+        #exclude{
+          background-color: red;
+        }
+        #visu{
+          background-color: green;
+        }
 </style>
 <header id="cabeçalho">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -57,65 +129,93 @@
     </div>
   </nav>
 </header>
-   <!--Campos de alunos-->
-   
-   <h1 style="text-align: center;">Turma</h1>
-   <div class="container-conteudo"> 
-
-    <span>    
-      <label>Nome do curso</label><br>
-      <input type="text" size="45" placeholder="Nome do curso" style="margin-rigth: 50px;">
-    </span>
-    <span>
-      <label>Professor</label><br>
-      <input type="text" size="25" placeholder="Professor" style="margin-rigth: 50px;">
-    </span>
-    <span>
-      <label>Período</label><br>
-      <input type="text" size="25" placeholder="Período" style="margin-rigth: 50px;">
-    </span>
-    <span>
-      <label>Data início</label><br>
-      <input type="text" size="6" placeholder="Data início" style="margin-rigth: 50px;">
-    </span>
-    <span>
-      <label>Data fim</label><br>
-      <input type="text" size="5" placeholder="Data fim" style="margin-rigth: 50px;">
-    </span>
-   </div>
-<center><div style="background-color: #a6a2a2; width: 90%; text-align: center;">
-  <h2 style="text-align: center;">Lista de alunos</h2></div></center>
-<div class="conteiner-tabela">
-  
-   <br><br><br>
-   <table id="tabela de aluno" class="student-table">
-    <thead>
-        <tr>
-            <th>Nomes</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>ID</th>
-            <th></th>
-        </tr>
-    </thead>
+<center><h1>Turma: TI-DEV</h1>
+  <div class="conteúdo" >
+    <b style="font-size: 18px; float: left;">Lista de alunos</b><br><br>
+      <table class="tabela">
+        <thead>
+          <th>Nome</th>
+          <th>ID</th>
+          <th></th>
+        </thead>
         <tbody>
-            <td>João da Silva</td>
-            <td>20230605-60</td>
-            <td>12345678-7</td>
-            <td>XXXXXX-XX</td>
-            <td>
-                <button style="border-radius: 5px; background-color: green; border: 0;"><a href="visu-user-adm.html" style="text-decoration: none; color: white;">Visualizar</a></button>
-                <button style="border-radius: 5px; background-color: red; border: 0;">Excluir</button>
-            </td>>
+          <tr>
+            <td>Fulano Ciclano</td>
+            <td>XXXXXXX-XX</td>
+            <td><button id="exclude">Excluir</button><button id="visu"><a href="visu-user-adm.html" style="text-decoration: none; color: white;">Visualizar</a></button></td>
+          </tr>
+          <tr>
+            <td>Deutrano Beltrano</td>
+            <td>XXXXXXXX-XX</td>
+            <td><button id="exclude">Excluir</button><button id="visu"><a href="visu-user-adm.html" style="text-decoration: none; color: white;">Visualizar</a></button></td>
+
+          </tr>
+          <tr>
+            <td>Ciclano Deutrano</td>
+            <td>XXXXXXXX-XX</td>
+            <td><button id="exclude">Excluir</button><button id="visu"><a href="visu-user-adm.html" style="text-decoration: none; color: white;">Visualizar</a></button></td>
+
+          </tr>
         </tbody>
-   </table>
+      </table>
+      <div id="informações"><center>
+        <div id="nome-curso" style="display: flex; justify-content: space-between;">
+          <span><p>
+            <label>Nome da turma</label>
+            <input type="text" size="18" placeholder="TI-DEV">
+          </p></span>
+          <span><p>
+            <label>Curso</label>
+            <select>
+              <option selected>Desenvolvimento de sistemas</option>
+              <option>Eletroeletrônica</option>
+              <option>Logística</option>
+              <option>Administração</option>
+            </select>
+          </p></span>
+        </div><br>
+        <div id="periodo-prof" style="display: flex; justify-content: space-between;">
+          <span><p>
+            <label>Período</label>
+            <select>
+              <option>Manhã</option>
+              <option selected>Tarde</option>
+              <option>Noite</option>
+              <option>Integral</option>
+            </select>
+          </p></span>
+          <span><p>
+            <label>Professor responsável</label><br>
+            <input type="text" placeholder="Daniel Campos">
+          </p></span>
+        </div>
+        <div id="data" style="display: flex; justify-content: space-between; align-items: center;">
+          <span><p>
+            <label>Data início</label>
+            <input type="date">
+          </p></span>
+          <span><p>
+            <label>Data fim</label>
+            <input type="date">
+          </p></span>
+          <span><p>
+            <button id="salvar"><a href="lista-turma-adm.html" style="text-decoration: none; color: white;">Salvar</a></button>
+          </p></span>
+          <span><p>
+            <button id="cancelar"><a href="lista-turma-adm.html" style="text-decoration: none; color: white;">Cancelar</a></button>
+          </p></span>
+        </div>
+          
+    </div>
+    
   </div>
+</center>
 <footer id="rodapé">
   <div class="container">
     <p>&copy; 2023 Intelect. Todos os direitos reservados.</p>
   </div>
 </footer>
-  </body> 
+</body> 
 
 
       
