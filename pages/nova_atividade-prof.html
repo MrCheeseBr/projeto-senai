@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova atividade </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Cabeçalho -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="../imagem/logo azul.svg" alt="Logo" width="100" height="32">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../imagem/profile.png" width="32" height="32">
+                Professor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="homeprof.html">
+                <img src="../imagem/home.png" width="32" height="32">
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <img src="../imagem/logout.png" width="32" height="32">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+<style id="estilo">
+  body{
+      background-color: #716f6f ;
+  }
+  header{
+      position: relative;
+      top: 0;
+      margin: 100px;
+  }
+  footer{
+      bottom: 0;
+      position:absolute;
+      background-color: #a6a2a2;
+      width: 100%;
+      text-align: center;
+  }
+  .conteiner-conteudo{
+      max-width: 90%;
+      background-color: #a6a2a2;
+      border-radius: 5px;
+      justify-content: center;
+      padding: 15px;
+  }
+  .conteiner-conteudo span{
+      margin-right: 15px;
+  }
+  .conteiner-descrição {
+      display: flex;
+      max-width: 80%;
+      background-color: #a6a2a2;
+      border-radius: 0px 0px 5px 5px;
+      justify-content: center;
+      padding: 15px;
+  }
+  .conteiner-descrição span{
+      margin-right: 15px;
+  }
+  .titulo-data{
+    display: flex;
+    max-width: 80%;
+    background-color: #a6a2a2;
+    border-radius: 0px 0px 5px 5px;
+    justify-content: center;
+    padding: 15px;
+  }
+  #Salvar{
+      background-color: green;
+      border-radius: 5px;
+      border: 0;
+      padding: 5px;
+  }
+  #Cancelar{
+  background-color: red;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+  }
+</style>
+
+<!-- Cabeçalho -->
+
+
+
+</head>
+<body>
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<div class="container">
+  <a class="navbar-brand" href="#">
+    <img src="../../imagem/logo%20azul.svg" alt="Logo" width="100" height="32">
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <img src="../imagem/profile.png" width="32" height="32">
+          Professor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="telahome-aluno.html">
+          <img src="../imagem/home.png" width="32" height="32">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../index.html">
+          <img src="../imagem/logout.png" width="32" height="32">
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+</header>
+<center>
+<h1>Adicionar nova atividade</h1>
+<div class="conteiner-conteudo"><form action="lista-ativ-prof.html">
+  <div class="titulo-data">
+    <span>
+        <p><b>Título</b><br>
+        <input type="text" id="título" size="40px" required></p>
+   </span>
+ 
+   <span>
+        <p><b>Data-Ínicio</b><br>
+        <input type="text" id="inicio" size="20px" required></p>
+    </span>
+  
+   <span>
+      <p><b>Data-Fim</b><br>
+      <input type="text" id="fim" size="20px" required></p>
+   </span>
+  </div>
+  <div class="conteiner-descrição" id="div descrição e anexos">
+    <span>
+      <p><b>Descrição</b><br>
+      <textarea id="descrição" required></textarea></p>
+    </span>
+    <span>
+      <p><b>Anexar arquivos<img src="../../imagem/anexo.png" width="32" height="32"><br>
+      <input type="file" id="anexo" size="30px">
+      </b></p>
+    </span>
+  </div>
+  <button id="Salvar" type="submit"><a href="lista-ativ-prof.html" style="text-decoration: none;color: white;">Salvar como nova atividade</a></button></form><br>
+  <button id="Cancelar"><a href="lista-ativ-prof.html" style="text-decoration: none; color: rgb(255, 255, 255);">Cancelar</a></button>
+</div>
+</center>
+
+
+<footer style="background-color:#a6a2a2 ; position: absolute; bottom: 0; width: 100%; text-align: center;">
+    <div class="container">
+      <p>&copy; 2023 Intelect. Todos os direitos reservados.</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>

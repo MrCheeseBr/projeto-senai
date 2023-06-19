@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #716f6f;
+}
+
+.container-conteudo{
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 40px;
+        text-align: center;
+        background-color: #a6a2a2;
+        border-radius: 10px 10px 0 0 ;
+        display: flex;
+        justify-content: space-between;
+}
+
+.table{
+    border: #909090;
+    width: 5;
+}
+
+.student-table td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.student-table th{
+    border-right: 1 px solid black;
+    border-bottom: 1px solid black;
+}
+
+.conteiner-tabela{
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    background-color: #a6a2a2;
+    border-radius: 0px 0px 10px 10px ;
+    justify-content: center;
+}
+.bemvindo button {
+    display:inline-block;
+    padding: 12px 60px;
+    background-color: #0c60d7;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 1px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+#nova-ativ{
+    display:inline-block;
+    padding: 12px 60px;
+    background-color: #0c60d7;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 1px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
