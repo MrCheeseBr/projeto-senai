@@ -34,6 +34,27 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+    .tabela th{
+        padding: 8px;
+        border-right: 1px solid black;
+        border-bottom: 3px solid black;
+        border-left: 1px solid black;
+        background-color: rgb(27, 189, 135);
+    }
+    .tabela td{
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
+    .tabela tr:nth-child(odd){
+    background-color: beige;
+    }
+    .tabela{
+        align-items: center;
+        margin: auto;
+    }
 </style>
 <header id="cabeçalho">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -86,13 +107,12 @@
       </p></span>
     </div>
 
-   <table id="tabela de aluno" class="student-table">
+   <table id="tabela" class="tabela">
     <thead>
         <tr>
             <th>Nome de atividades</th>
             <th>Curso</th>
             <th>Data de entrega</th>
-            <th>Editar</th>
             <th></th>
         </tr>
     </thead>
