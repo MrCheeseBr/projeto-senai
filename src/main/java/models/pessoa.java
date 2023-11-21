@@ -1,4 +1,4 @@
-package sp.senai.br.educati.intelect.models;
+package models;
 
 import enums.Perfil;
 import jakarta.persistence.*;
