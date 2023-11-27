@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @DiscriminatorValue("A")
-public class aluno extends pessoa{
+public class Aluno extends Pessoa {
     @NotEmpty(message = "Informe a matrícula")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matricula;

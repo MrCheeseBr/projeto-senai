@@ -23,7 +23,7 @@ import java.util.ArrayList;
 )
 
 
-public class pessoa {
+public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -56,18 +56,18 @@ public class pessoa {
 
     @NotEmpty(message = "Informe a turma")
     @ManyToMany(mappedBy = "pessoas")
-    private ArrayList<turmas> turmas = new ArrayList<turmas>();
+    private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
 
     @NotEmpty(message = "Informe um endereço")
     private String endereço;
 
     //get and setters
 
-    public ArrayList<sp.senai.br.educati.intelect.models.turmas> getTurmas() {
+    public ArrayList<Turmas> getTurmas() {
         return turmas;
     }
 
-    public void setTurmas(ArrayList<sp.senai.br.educati.intelect.models.turmas> turmas) {
+    public void setTurmas(ArrayList<Turmas> turmas) {
         this.turmas = turmas;
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class turmas {
+public class Turmas {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,5 +24,5 @@ public class turmas {
             joinColumns = @JoinColumn(name="turma_id"),
             inverseJoinColumns = @JoinColumn(name="pessoa_id")
     )
-    private List<pessoa> alunos = new ArrayList<pessoa>();
+    private List<Pessoa> alunos = new ArrayList<Pessoa>();
 }
