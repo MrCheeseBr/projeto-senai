@@ -1,4 +1,4 @@
-package models;
+package sp.senai.br.educati.intelect.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

@@ -1,4 +1,4 @@
-package enums;
+package sp.senai.br.educati.intelect.enums;
 
 public enum Sexo {
     HOMEM("Homem"),

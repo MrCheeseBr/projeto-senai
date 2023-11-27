@@ -1,9 +1,8 @@
-package models;
+package sp.senai.br.educati.intelect.models;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

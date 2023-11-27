@@ -1,4 +1,4 @@
-package models;
+package sp.senai.br.educati.intelect.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -39,11 +39,11 @@ public class atividade {
         this.id = id;
     }
 
-    public ArrayList<models.turmas> getTurmas() {
+    public ArrayList<sp.senai.br.educati.intelect.models.turmas> getTurmas() {
         return turmas;
     }
 
-    public void setTurmas(ArrayList<models.turmas> turmas) {
+    public void setTurmas(ArrayList<sp.senai.br.educati.intelect.models.turmas> turmas) {
         this.turmas = turmas;
     }
 

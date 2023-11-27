@@ -1,6 +1,6 @@
-package models;
+package sp.senai.br.educati.intelect.models;
 
-import enums.Perfil;
+import sp.senai.br.educati.intelect.enums.Perfil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -64,11 +63,11 @@ public class pessoa {
 
     //get and setters
 
-    public ArrayList<models.turmas> getTurmas() {
+    public ArrayList<sp.senai.br.educati.intelect.models.turmas> getTurmas() {
         return turmas;
     }
 
-    public void setTurmas(ArrayList<models.turmas> turmas) {
+    public void setTurmas(ArrayList<sp.senai.br.educati.intelect.models.turmas> turmas) {
         this.turmas = turmas;
     }
 
