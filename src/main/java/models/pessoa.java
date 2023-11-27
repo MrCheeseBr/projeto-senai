@@ -9,6 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -52,7 +55,22 @@ public class pessoa {
     @NotEmpty(message = "Informe uma senha")
     private String senha;
 
+    @NotEmpty(message = "Informe a turma")
+    @ManyToMany(mappedBy = "pessoas")
+    private ArrayList<turmas> turmas = new ArrayList<turmas>();
+
+    @NotEmpty(message = "Informe um endereço")
+    private String endereço;
+
     //get and setters
+
+    public ArrayList<models.turmas> getTurmas() {
+        return turmas;
+    }
+
+    public void setTurmas(ArrayList<models.turmas> turmas) {
+        this.turmas = turmas;
+    }
 
     public Long getId() {
         return id;
@@ -125,4 +143,5 @@ public class pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }
