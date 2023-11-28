@@ -1,0 +1,36 @@
+adm ->  cadastro user
+			aluno
+			adm
+			prof
+
+
+	acesso lista aluno
+	acesso lista turma
+	acesso lista admins
+	acesso lista de turmas
+
+
+	alteração de aluno
+	alteração turma
+	alteração de admin
+	
+
+	cadastro turmas
+
+prof -> cadastro atividade
+	
+
+	visualização/alteração atividade
+
+	lista turma
+	lista atividade
+
+
+
+aluno -> lista atividade
+
+	visu atividade
+
+	visualização turma
+	
+	
