@@ -54,7 +54,6 @@ public class Pessoa {
     @NotEmpty(message = "Informe uma senha")
     private String senha;
 
-    @NotEmpty(message = "Informe a turma")
     @ManyToMany(mappedBy = "pessoas")
     private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
 

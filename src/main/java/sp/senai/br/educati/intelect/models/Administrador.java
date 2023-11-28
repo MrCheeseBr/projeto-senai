@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sp.senai.br.educati.intelect.enums.Perfil;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +19,10 @@ public class Administrador extends Pessoa {
 
     @NotEmpty(message = "Informe a renumeração")
     private Long renumeraçao;
+
+    public Administrador(){
+        this.setPerfil(Perfil.ADMINISTRADOR);
+    }
 
 
     //get and setters

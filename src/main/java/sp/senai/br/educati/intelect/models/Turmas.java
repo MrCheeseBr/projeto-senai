@@ -25,4 +25,22 @@ public class Turmas {
             inverseJoinColumns = @JoinColumn(name="pessoa_id")
     )
     private List<Pessoa> alunos = new ArrayList<Pessoa>();
+
+    //get and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Pessoa> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Pessoa> alunos) {
+        this.alunos = alunos;
+    }
 }
