@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -136,6 +137,126 @@ public class AdministradorController {
     }
 
     //alteração
+
+    @GetMapping("/alterarAluno/{id}")
+    public String alterarAluno(@PathVariable("id") Long id, Model model){
+
+        Aluno aluno= alunoRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        model.addAttribute("aluno", aluno);
+
+        return "/administrador/alterarAluno";
+    }
+
+    @PostMapping("/alterarAluno/{id}")
+    public  String alterarAluno(@PathVariable("id") Long id, @Valid Aluno aluno, BindingResult result, RedirectAttributes attributes){
+
+        if (result.hasErrors()) {
+            return "/administrador/alterarAluno";
+        }
+
+        Aluno alunoAtualizado= alunoRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        alunoAtualizado.setMatricula(aluno.getMatricula());
+        alunoAtualizado.setNome(aluno.getNome());
+        alunoAtualizado.setId(aluno.getId());
+        alunoAtualizado.setTurmas(aluno.getTurmas());
+        alunoAtualizado.setTelefone(aluno.getTelefone());
+        alunoAtualizado.setCpf(aluno.getCpf());
+        alunoAtualizado.setData_nascimento(aluno.getData_nascimento());
+        alunoAtualizado.setEmail(aluno.getEmail());
+        alunoAtualizado.setEndereco(aluno.getEndereco());
+        alunoAtualizado.setRg(aluno.getRg());
+        alunoAtualizado.setSenha(aluno.getSenha());
+
+        alunoRepository.save(alunoAtualizado);
+
+        attributes.addFlashAttribute("mensagemAlterarAluno", "Aluno atualizado com sucesso!");
+
+        return "redirect:/administrador/alterarAluno";
+    }
+
+    @GetMapping("/alterarAdmin/{id}")
+    public String alterarAdmin(@PathVariable("id") Long id, Model model){
+
+        Administrador administrador= administradorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        model.addAttribute("alterarAdmin", administrador);
+
+        return "/administrador/alterarAdmin";
+    }
+
+    @PostMapping("/alterarAdmin/{id}")
+    public  String alterarAdmin(@PathVariable("id") Long id, @Valid Administrador administrador, BindingResult result, RedirectAttributes attributes){
+
+        if (result.hasErrors()) {
+            return "/administrador/alterarAdmin";
+        }
+
+        Administrador administradorAtualizado= administradorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        administradorAtualizado.setNome(administrador.getNome());
+        administradorAtualizado.setId(administrador.getId());
+        administradorAtualizado.setTurmas(administrador.getTurmas());
+        administradorAtualizado.setTelefone(administrador.getTelefone());
+        administradorAtualizado.setCpf(administrador.getCpf());
+        administradorAtualizado.setData_nascimento(administrador.getData_nascimento());
+        administradorAtualizado.setEmail(administrador.getEmail());
+        administradorAtualizado.setEndereco(administrador.getEndereco());
+        administradorAtualizado.setRg(administrador.getRg());
+        administradorAtualizado.setSenha(administrador.getSenha());
+        administradorAtualizado.setRenumeracao(administrador.getRenumeracao());
+
+        administradorRepository.save(administradorAtualizado);
+
+        attributes.addFlashAttribute("mensagemAlterarAdmin", "Administrador atualizado com sucesso!");
+
+        return "redirect:/administrador/alterarAdmin";
+    }
+
+    @GetMapping("/alterarProfessor/{id}")
+    public String alterarProfessor(@PathVariable("id") Long id, Model model){
+
+        Professor professor= professorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        model.addAttribute("alterarProfessor", professor);
+
+        return "/administrador/alterarProfessor";
+    }
+
+    @PostMapping("/alterarProfessor/{id}")
+    public  String alterarProfessor(@PathVariable("id") Long id, @Valid Professor professor, BindingResult result, RedirectAttributes attributes){
+
+        if (result.hasErrors()) {
+            return "/administrador/alterarProfessor";
+        }
+
+        Professor professorAtualizado= professorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        professorAtualizado.setNome(professor.getNome());
+        professorAtualizado.setId(professor.getId());
+        professorAtualizado.setTurmas(professor.getTurmas());
+        professorAtualizado.setTelefone(professor.getTelefone());
+        professorAtualizado.setCpf(professor.getCpf());
+        professorAtualizado.setData_nascimento(professor.getData_nascimento());
+        professorAtualizado.setEmail(professor.getEmail());
+        professorAtualizado.setEndereco(professor.getEndereco());
+        professorAtualizado.setRg(professor.getRg());
+        professorAtualizado.setSenha(professor.getSenha());
+        professorAtualizado.setRenumeracao(professor.getRenumeracao());
+
+        professorRepository.save(professorAtualizado);
+
+        attributes.addFlashAttribute("mensagemAlterarProfessor", "Professor atualizado com sucesso!");
+
+        return "redirect:/administrador/alterarProfessor";
+    }
 
 
 

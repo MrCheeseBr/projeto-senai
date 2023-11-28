@@ -51,14 +51,13 @@ public class Pessoa {
     @Email(message = "O e-mail informado é inválido")
     private String email;
 
-    @NotEmpty(message = "Informe uma senha")
     private String senha;
 
     @ManyToMany(mappedBy = "pessoas")
     private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
 
     @NotEmpty(message = "Informe um endereço")
-    private String endereço;
+    private String endereco;
 
     //get and setters
 
@@ -142,4 +141,11 @@ public class Pessoa {
         this.senha = senha;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }

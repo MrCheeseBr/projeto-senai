@@ -7,8 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import sp.senai.br.educati.intelect.enums.Perfil;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 @Data
 @Entity
 @DiscriminatorValue("M")
@@ -18,7 +18,7 @@ public class Administrador extends Pessoa {
     private Long id;
 
     @NotEmpty(message = "Informe a renumeração")
-    private Long renumeraçao;
+    private Long renumeracao;
 
     public Administrador(){
         this.setPerfil(Perfil.ADMINISTRADOR);
@@ -36,11 +36,11 @@ public class Administrador extends Pessoa {
         this.id = id;
     }
 
-    public Long getRenumeraçao() {
-        return renumeraçao;
+    public Long getRenumeracao() {
+        return renumeracao;
     }
 
-    public void setRenumeraçao(Long renumeraçao) {
-        this.renumeraçao = renumeraçao;
+    public void setRenumeracao(Long renumeracao) {
+        this.renumeracao = renumeracao;
     }
 }

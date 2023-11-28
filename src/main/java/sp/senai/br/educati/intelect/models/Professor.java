@@ -9,8 +9,7 @@ import sp.senai.br.educati.intelect.enums.Perfil;
 
 import java.util.ArrayList;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 @Entity
 @DiscriminatorValue("P")
@@ -24,7 +23,7 @@ public class Professor extends Pessoa {
     }
 
     @NotEmpty(message = "Informe a renumeração")
-    private Long renumeraçao;
+    private Long renumeracao;
 
     @NotEmpty(message = "Informe a turma")
     @ManyToMany(mappedBy = "pessoas")
@@ -41,12 +40,12 @@ public class Professor extends Pessoa {
         this.id = id;
     }
 
-    public Long getRenumeraçao() {
-        return renumeraçao;
+    public Long getRenumeracao() {
+        return renumeracao;
     }
 
-    public void setRenumeraçao(Long renumeraçao) {
-        this.renumeraçao = renumeraçao;
+    public void setRenumeracao(Long renumeracao) {
+        this.renumeracao = renumeracao;
     }
 
     public ArrayList<Turmas> getTurmas() {
