@@ -17,6 +17,9 @@ import sp.senai.br.educati.intelect.repository.AlunoRepository;
 import sp.senai.br.educati.intelect.repository.ProfessorRepository;
 import sp.senai.br.educati.intelect.repository.TurmasRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/administrador")
 public class AdministradorController {
@@ -135,6 +138,90 @@ public class AdministradorController {
         attributes.addFlashAttribute("mensagemTurmaSalva", "Turma salva com sucesso");
         return "redirect:/administrador/cadTurmas";
     }
+
+    //listas/listagens
+
+    @GetMapping("/listaAlunos")
+    public String listagemAlunos(Model model){
+        List<Aluno> listaAlunos= alunoRepository.findAll();
+
+        model.addAttribute("ListaAlunos", listaAlunos);
+
+        return "/administrador/listaAlunos";
+    }
+
+    @GetMapping("/listaProfessores")
+    public String listagemProfessores(Model model){
+        List<Professor> listaProfessor= professorRepository.findAll();
+
+        model.addAttribute("listaProfessores", listaProfessor);
+
+        return "/administrador/listaProfessores";
+    }
+
+    @GetMapping("/listaAdministrador")
+    public String listagemAdmin(Model model){
+        List<Administrador> listaAdmin= administradorRepository.findAll();
+
+        model.addAttribute("listaAdmin", listaAdmin);
+
+        return "/administrador/listaAdministrador";
+    }
+
+    @GetMapping("/listaTurmas")
+    public String listagemTurmas(Model model){
+        List<Turmas> listaTurmas= turmasRepository.findAll();
+
+        model.addAttribute("listaTurmas", listaTurmas);
+
+        return "/administrador/listaTurmas";
+    }
+
+    //deletes
+    @GetMapping("/excluirAlunos/{id}")
+    public String excluirAlunos(@PathVariable("id") Long id,RedirectAttributes attributes){
+        Aluno aluno= alunoRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido!"));
+
+        alunoRepository.delete(aluno);
+
+        attributes.addFlashAttribute("mensagemDelAlunos", "Aluno excluído com sucesso!");
+        return "redirect:/administrador/excluirAlunos";
+    }
+
+    @GetMapping("/excluirProfessores/{id}")
+    public String excluirProfessores(@PathVariable("id") Long id,RedirectAttributes attributes){
+        Professor professor= professorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido!"));
+
+        professorRepository.delete(professor);
+
+        attributes.addFlashAttribute("mensagemDelProfessores", "Professor excluído com sucesso!");
+        return "redirect:/administrador/excluirProfessores";
+    }
+
+    @GetMapping("/excluirAdministradorres/{id}")
+    public String excluirAdministradores(@PathVariable("id") Long id,RedirectAttributes attributes){
+        Administrador administrador= administradorRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido!"));
+
+        administradorRepository.delete(administrador);
+
+        attributes.addFlashAttribute("mensagemDelAdmin", "Administrador excluído com sucesso!");
+        return "redirect:/administrador/excluirAdministradores";
+    }
+
+    @GetMapping("/excluirTurmas/{id}")
+    public String excluirTurmas(@PathVariable("id") Long id,RedirectAttributes attributes){
+        Turmas turmas= turmasRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido!"));
+
+        turmasRepository.delete(turmas);
+
+        attributes.addFlashAttribute("mensagemDelTurmas", "Turmas excluída com sucesso!");
+        return "redirect:/administrador/excluirTurmas";
+    }
+
 
     //alteração
 
@@ -258,8 +345,41 @@ public class AdministradorController {
         return "redirect:/administrador/alterarProfessor";
     }
 
+    @GetMapping("/alterarTurmas/{id}")
+    public String alterarTurmas(@PathVariable("id") Long id, Model model){
 
+        Turmas turmas= turmasRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
 
+        model.addAttribute("alterarTurmas", turmas);
+
+        return "/administrador/alterarTurmas";
+    }
+    @PostMapping("/alterarTurmas/{id}")
+    public  String alterarTurmas(@PathVariable("id") Long id, @Valid Turmas turmas, BindingResult result, RedirectAttributes attributes){
+
+        if (result.hasErrors()) {
+            return "/administrador/alterarTurmas";
+        }
+
+        Turmas turmasAtualizadas= turmasRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("ID Inválido"));
+
+        turmasAtualizadas.setAlunos(turmas.getAlunos());
+        turmasAtualizadas.setId(turmas.getId());
+        turmasAtualizadas.setPeriodoTurmas(turmas.getPeriodoTurmas());
+        turmasAtualizadas.setDescricao(turmas.getDescricao());
+        turmasAtualizadas.setDataConclusao(turmas.getDataConclusao());
+        turmasAtualizadas.setDataInicio(turmas.getDataInicio());
+        turmasAtualizadas.setCurso(turmasAtualizadas.getCurso());
+        turmasAtualizadas.setNome(turmas.getNome());
+
+        turmasRepository.save(turmasAtualizadas);
+
+        attributes.addFlashAttribute("mensagemAlterarTurmas", "Turma atualizada com sucesso!");
+
+        return "redirect:/administrador/alterarTurmas";
+    }
 
 
 }

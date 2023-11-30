@@ -17,6 +17,8 @@ adm ->  cadastro user
 
 	cadastro turmas
 
+	delete todas as classes
+
 prof -> cadastro atividade
 	
 
