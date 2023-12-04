@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -54,21 +55,30 @@ public class Pessoa {
     private String senha;
 
     @ManyToMany(mappedBy = "pessoas")
-    private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
+    private List<Turmas> turmas;
 
     @NotEmpty(message = "Informe um endereço")
     private String endereco;
 
     //get and setters
 
-    public ArrayList<Turmas> getTurmas() {
+    public void addTurma(Turmas turma){
+        turma.getPessoas().add(this);
+        this.turmas.add(turma);
+    }
+
+    public void removeTurma(Turmas turma){
+        turma.getPessoas().remove(this);
+        this.turmas.remove(turma);
+    }
+
+    public List<Turmas> getTurmas() {
         return turmas;
     }
 
-    public void setTurmas(ArrayList<Turmas> turmas) {
+    public void setTurmas(List<Turmas> turmas) {
         this.turmas = turmas;
     }
-
     public Long getId() {
         return id;
     }

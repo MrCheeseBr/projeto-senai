@@ -7,6 +7,7 @@ import sp.senai.br.educati.intelect.enums.Cursos;
 import sp.senai.br.educati.intelect.enums.PeriodoTurmas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -41,7 +42,7 @@ public class Turmas {
             joinColumns = @JoinColumn(name="turma_id"),
             inverseJoinColumns = @JoinColumn(name="pessoa_id")
     )
-    private ArrayList<Pessoa> alunos = new ArrayList<Pessoa>();
+    private List<Pessoa> pessoas;
 
     //get and setters
 
@@ -53,11 +54,23 @@ public class Turmas {
         this.id = id;
     }
 
-    public ArrayList<Pessoa> getAlunos() {
-        return alunos;
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
     }
 
-    public void setAlunos(ArrayList<Pessoa> alunos) {
-        this.alunos = alunos;
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
+
+    public void addPessoa(Pessoa pessoa){
+        pessoa.getTurmas().add(this);
+        this.pessoas.add(pessoa);
+    }
+
+    public void removePessoa(Pessoa pessoa){
+        pessoa.getTurmas().remove(this);
+        this.pessoas.remove(pessoa);
+    }
+
 }

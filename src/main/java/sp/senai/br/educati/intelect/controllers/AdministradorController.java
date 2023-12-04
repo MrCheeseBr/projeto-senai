@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sp.senai.br.educati.intelect.enums.Perfil;
 import sp.senai.br.educati.intelect.models.*;
@@ -71,6 +68,7 @@ public class AdministradorController {
 
     //salvar os cadastros
 
+
     @PostMapping("/salvarAluno")
     public String salvarAluno(@Valid Aluno aluno, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
@@ -79,20 +77,23 @@ public class AdministradorController {
         //verifica se turmas foram selecionadas
         if(aluno.getTurmas()!= null){
             Turmas turmasBanco = turmasRepository.findById(aluno.getTurmas().get(0).getId()).orElseThrow(()
-                -> new IllegalArgumentException("ID Inválido")
+                    -> new IllegalArgumentException("ID Inválido")
             );
 
             //adiciona turma na lista de turma do aluno
-            //aluno.addTurma(turmasBanco);
+            aluno.addTurma(turmasBanco);
 
             //adiciona turma ao aluno
-            //turmasBanco.addPessoa(aluno);
+            turmasBanco.addPessoa(aluno);
 
         }
+
+
         alunoRepository.save(aluno);
         attributes.addFlashAttribute("mensagemAlunoSalvo", "Aluno salvo com sucesso");
         return "redirect:/administrador/cadAluno";
     }
+
 
     @PostMapping("/salvarProfessor")
     public String salvarProfessor(@Valid Professor professor, BindingResult result, RedirectAttributes attributes){
@@ -106,10 +107,10 @@ public class AdministradorController {
             );
 
             //adiciona turma na lista de turma do professor
-            //professor.addTurma(turmasBanco);
+            professor.addTurma(turmasBanco);
 
             //adiciona turma ao professor
-            //turmasBanco.addPessoa(professor);
+            turmasBanco.addPessoa(professor);
 
         }
         professorRepository.save(professor);
@@ -365,7 +366,7 @@ public class AdministradorController {
         Turmas turmasAtualizadas= turmasRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido"));
 
-        turmasAtualizadas.setAlunos(turmas.getAlunos());
+        turmasAtualizadas.setPessoas(turmas.getPessoas());
         turmasAtualizadas.setId(turmas.getId());
         turmasAtualizadas.setPeriodoTurmas(turmas.getPeriodoTurmas());
         turmasAtualizadas.setDescricao(turmas.getDescricao());
@@ -380,6 +381,7 @@ public class AdministradorController {
 
         return "redirect:/administrador/alterarTurmas";
     }
+
 
 
 }

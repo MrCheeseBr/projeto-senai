@@ -5,14 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import sp.senai.br.educati.intelect.enums.Perfil;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
+
 @Entity
 @DiscriminatorValue("A")
 public class Aluno extends Pessoa {
@@ -20,6 +16,8 @@ public class Aluno extends Pessoa {
     public Aluno() {
         this.setPerfil(Perfil.ALUNO);
     }
+
+
 
     @NotEmpty(message = "Informe a matrícula")
     @GeneratedValue(strategy = GenerationType.AUTO)
