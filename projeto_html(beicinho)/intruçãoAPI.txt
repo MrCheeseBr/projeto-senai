@@ -1,0 +1,38 @@
+api exemplo(implementar no projeto pincipal)
+
+dentro de um controller, (nomeclasse+API)
+
+@RestController
+@RequestMapping("/aluno")
+public class AlunoController {
+
+    @Autowired
+    private AlunoRepository alunoRepository;
+
+    //CRUD - Create, Read, Update, DELETE
+
+    //Create
+    @PostMapping
+    public void inserir(@RequestBody Aluno aluno){
+        alunoRepository.save(aluno);
+    }
+    //REad
+    @GetMapping
+    public List<Aluno> buscarAlunos(){
+        return alunoRepository.findAll();
+    }
+    //Update
+    @PutMapping
+    public void alterar(@RequestBody Aluno aluno){
+        alunoRepository.save(aluno);
+    }
+    //delete
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id){
+        alunoRepository.deleteById(id);
+    }
+
+
+
+
+}
