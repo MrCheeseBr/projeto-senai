@@ -28,15 +28,6 @@ public class Atividade {
     private String descricao;
     private String titulo;
 
-    public void addTurma(Turmas turma){
-        turma.getPessoas().add(this);
-        this.turmas.add(turma);
-    }
-
-    public void removeTurma(Turmas turma){
-        turma.getPessoas().remove(this);
-        this.turmas.remove(turma);
-    }
 
     //get and setters
 

@@ -34,7 +34,7 @@ public class AdministradorController {
 
     @GetMapping
     public String homeAdm(){
-        return "/administrador/home";
+        return "/administrador/homeAdm";
     }
 
     //cadastros
