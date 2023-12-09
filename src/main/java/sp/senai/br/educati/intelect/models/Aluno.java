@@ -19,7 +19,6 @@ public class Aluno extends Pessoa {
 
 
 
-    @NotEmpty(message = "Informe a matrícula")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matricula;
 

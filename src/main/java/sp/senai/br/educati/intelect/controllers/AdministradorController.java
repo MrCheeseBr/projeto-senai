@@ -40,7 +40,9 @@ public class AdministradorController {
     //cadastros
     @GetMapping("/cadastrarAluno")
     public String cadastrarAluno(Model model){
+
         model.addAttribute("cadAluno", new Aluno());
+
 
         return "/administrador/cadAluno";
     }
@@ -75,7 +77,7 @@ public class AdministradorController {
             return "/administrador/cadAluno";
         }
         //verifica se turmas foram selecionadas
-        if(aluno.getTurmas()!= null){
+        /*if(aluno.getTurmas()!= null){
             Turmas turmasBanco = turmasRepository.findById(aluno.getTurmas().get(0).getId()).orElseThrow(()
                     -> new IllegalArgumentException("ID Inválido")
             );
@@ -86,7 +88,7 @@ public class AdministradorController {
             //adiciona turma ao aluno
             turmasBanco.addPessoa(aluno);
 
-        }
+        }*/
 
 
         alunoRepository.save(aluno);

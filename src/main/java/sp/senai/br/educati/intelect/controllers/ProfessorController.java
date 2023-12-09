@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sp.senai.br.educati.intelect.models.Aluno;
-import sp.senai.br.educati.intelect.models.Atividade;
-import sp.senai.br.educati.intelect.models.Professor;
-import sp.senai.br.educati.intelect.models.Turmas;
+import sp.senai.br.educati.intelect.models.*;
 import sp.senai.br.educati.intelect.repository.AlunoRepository;
 import sp.senai.br.educati.intelect.repository.AtividadeRepository;
 import sp.senai.br.educati.intelect.repository.TurmasRepository;
@@ -62,15 +59,15 @@ public class ProfessorController {
             return "/professor/cadAtividade";
         }
         //verifica se turmas foram selecionadas
-        if(atividade.getTurmas()!= null){
+        /*if(atividade.getTurmas()!= null){
             Turmas turmasBanco = turmasRepository.findById(atividade.getTurmas().get(0).getId()).orElseThrow(()
                     -> new IllegalArgumentException("ID Inválido")
             );
 
             //adiciona turma na lista de turma do cadastro da atividade
-            atividade.addTurma(turmasBanco);
+            Pessoa.addTurma(turmasBanco);
 
-        }
+        }*/
         atividadeRepository.save(atividade);
         attributes.addFlashAttribute("mensagemAtividadeSalva", "Atividade salva com sucesso");
         return "redirect:/professor/cadAtividade";
@@ -97,7 +94,6 @@ public class ProfessorController {
 
         atividadeAtualizada.setTitulo(atividade.getTitulo());
         atividadeAtualizada.setId(atividade.getId());
-        atividadeAtualizada.setTurmas(atividadeAtualizada.getTurmas());
         atividadeAtualizada.setData_conclusao(atividade.getData_conclusao());
         atividadeAtualizada.setData_inicio(atividade.getData_inicio());
         atividadeAtualizada.setDescricao(atividade.getDescricao());

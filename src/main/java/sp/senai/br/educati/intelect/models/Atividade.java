@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,9 +19,6 @@ public class Atividade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty(message = "Informe a turma destinada")
-    @ManyToMany(mappedBy = "atividade")
-    private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
 
     private Integer data_conclusao;
     private Integer data_inicio;
@@ -38,14 +36,6 @@ public class Atividade {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ArrayList<Turmas> getTurmas() {
-        return turmas;
-    }
-
-    public void setTurmas(ArrayList<Turmas> turmas) {
-        this.turmas = turmas;
     }
 
     public Integer getData_conclusao() {

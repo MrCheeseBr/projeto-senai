@@ -36,6 +36,7 @@ public class Turmas {
 
     @NotEmpty(message = "Informe o curso da turma")
     private Cursos curso;
+
     @ManyToMany
     @JoinTable(
             name="pessoas_turmas",
@@ -43,6 +44,7 @@ public class Turmas {
             inverseJoinColumns = @JoinColumn(name="pessoa_id")
     )
     private List<Pessoa> pessoas;
+
 
     //get and setters
 

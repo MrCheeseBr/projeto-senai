@@ -1,5 +1,6 @@
 package sp.senai.br.educati.intelect.models;
 
+import jakarta.validation.constraints.NotNull;
 import sp.senai.br.educati.intelect.enums.Perfil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -32,20 +33,18 @@ public class Pessoa {
     @NotEmpty(message = "Informe um nome")
     private String nome;
 
-    @NotEmpty(message = "Informe a data de nascimento")
+    @NotNull(message = "Informe a data de nascimento")
     private Integer data_nascimento;
 
-    @NotEmpty(message = "Informe um CPF")
-    @CPF(message = "O CPF informado é inválido")
+    @NotNull(message = "Informe um CPF")
     private Integer cpf;
 
-    @NotEmpty(message = "Informe o RG")
+    @NotNull(message = "Informe o RG")
     private Integer rg;
 
-    @NotEmpty(message = "Informe um perfil")
     private Perfil perfil;
 
-    @NotEmpty(message = "Informe um telefone")
+    @NotNull(message = "Informe um telefone")
     private Long telefone;
 
     @NotEmpty(message = "Informe um e-mail")
@@ -57,11 +56,6 @@ public class Pessoa {
     @ManyToMany(mappedBy = "pessoas")
     private List<Turmas> turmas;
 
-    @NotEmpty(message = "Informe um endereço")
-    private String endereco;
-
-    //get and setters
-
     public void addTurma(Turmas turma){
         turma.getPessoas().add(this);
         this.turmas.add(turma);
@@ -71,6 +65,12 @@ public class Pessoa {
         turma.getPessoas().remove(this);
         this.turmas.remove(turma);
     }
+    @NotEmpty(message = "Informe um endereço")
+    private String endereco;
+
+    //get and setters
+
+
 
     public List<Turmas> getTurmas() {
         return turmas;
