@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sp.senai.br.educati.intelect.enums.Perfil;
+
 import sp.senai.br.educati.intelect.models.*;
 import sp.senai.br.educati.intelect.repository.AdministradorRepository;
 import sp.senai.br.educati.intelect.repository.AlunoRepository;
@@ -47,7 +47,7 @@ public class AdministradorController {
         return "/administrador/cadAluno";
     }
 
-    @GetMapping("/cadastrarProfessos")
+    @GetMapping("/cadastrarProfessores")
     public String cadastrarProfessor(Model model){
         model.addAttribute("cadProfessor", new Professor());
 
@@ -93,7 +93,7 @@ public class AdministradorController {
 
         alunoRepository.save(aluno);
         attributes.addFlashAttribute("mensagemAlunoSalvo", "Aluno salvo com sucesso");
-        return "redirect:/administrador/cadAluno";
+        return "redirect:/administrador/cadastrarAluno";
     }
 
 
@@ -117,7 +117,7 @@ public class AdministradorController {
         }
         professorRepository.save(professor);
         attributes.addFlashAttribute("mensagemProfessorSalvo", "Professor salvo com sucesso");
-        return "redirect:/administrador/cadProfessor";
+        return "redirect:/administrador/cadastrarProfessores";
     }
 
     @PostMapping("/salvarAdministrador")
@@ -128,7 +128,7 @@ public class AdministradorController {
 
         administradorRepository.save(administrador);
         attributes.addFlashAttribute("mensagemAdminSalvo", "Administrador salvo com sucesso");
-        return "redirect:/administrador/cadAdmin";
+        return "redirect:/administrador/cadastrarAdmin";
     }
 
     @PostMapping("/salvarTurmas")
@@ -139,7 +139,7 @@ public class AdministradorController {
 
         turmasRepository.save(turmas);
         attributes.addFlashAttribute("mensagemTurmaSalva", "Turma salva com sucesso");
-        return "redirect:/administrador/cadTurmas";
+        return "redirect:/administrador/cadastrarTurmas";
     }
 
     //listas/listagens
@@ -168,7 +168,7 @@ public class AdministradorController {
 
         model.addAttribute("listaAdmin", listaAdmin);
 
-        return "/administrador/listaAdministrador";
+        return "/administrador/listaAdmin";
     }
 
     @GetMapping("/listaTurmas")
@@ -181,7 +181,7 @@ public class AdministradorController {
     }
 
     //deletes
-    @GetMapping("/excluirAlunos/{id}")
+    @GetMapping("/excluirAluno/{id}")
     public String excluirAlunos(@PathVariable("id") Long id,RedirectAttributes attributes){
         Aluno aluno= alunoRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido!"));
@@ -189,10 +189,10 @@ public class AdministradorController {
         alunoRepository.delete(aluno);
 
         attributes.addFlashAttribute("mensagemDelAlunos", "Aluno excluído com sucesso!");
-        return "redirect:/administrador/excluirAlunos";
+        return "redirect:/administrador/listaAlunos";
     }
 
-    @GetMapping("/excluirProfessores/{id}")
+    @GetMapping("/excluirProfessor/{id}")
     public String excluirProfessores(@PathVariable("id") Long id,RedirectAttributes attributes){
         Professor professor= professorRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido!"));
@@ -203,7 +203,7 @@ public class AdministradorController {
         return "redirect:/administrador/excluirProfessores";
     }
 
-    @GetMapping("/excluirAdministradorres/{id}")
+    @GetMapping("/excluirAdministrador/{id}")
     public String excluirAdministradores(@PathVariable("id") Long id,RedirectAttributes attributes){
         Administrador administrador= administradorRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido!"));
@@ -211,10 +211,10 @@ public class AdministradorController {
         administradorRepository.delete(administrador);
 
         attributes.addFlashAttribute("mensagemDelAdmin", "Administrador excluído com sucesso!");
-        return "redirect:/administrador/excluirAdministradores";
+        return "redirect:/administrador/listaAdministrador";
     }
 
-    @GetMapping("/excluirTurmas/{id}")
+    @GetMapping("/excluirTurma/{id}")
     public String excluirTurmas(@PathVariable("id") Long id,RedirectAttributes attributes){
         Turmas turmas= turmasRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido!"));
@@ -234,7 +234,7 @@ public class AdministradorController {
         Aluno aluno= alunoRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido"));
 
-        model.addAttribute("aluno", aluno);
+        model.addAttribute("alunoAtualizado", aluno);
 
         return "/administrador/alterarAluno";
     }
@@ -265,7 +265,7 @@ public class AdministradorController {
 
         attributes.addFlashAttribute("mensagemAlterarAluno", "Aluno atualizado com sucesso!");
 
-        return "redirect:/administrador/alterarAluno";
+        return "redirect:/administrador/listaAlunos";
     }
 
     @GetMapping("/alterarAdmin/{id}")
@@ -274,7 +274,7 @@ public class AdministradorController {
         Administrador administrador= administradorRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido"));
 
-        model.addAttribute("alterarAdmin", administrador);
+        model.addAttribute("adminAtualizado", administrador);
 
         return "/administrador/alterarAdmin";
     }
@@ -305,7 +305,7 @@ public class AdministradorController {
 
         attributes.addFlashAttribute("mensagemAlterarAdmin", "Administrador atualizado com sucesso!");
 
-        return "redirect:/administrador/alterarAdmin";
+        return "redirect:/administrador/listaAdministrador";
     }
 
     @GetMapping("/alterarProfessor/{id}")

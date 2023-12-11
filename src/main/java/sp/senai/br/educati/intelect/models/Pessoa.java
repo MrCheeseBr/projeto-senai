@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -33,24 +34,25 @@ public class Pessoa {
     @NotEmpty(message = "Informe um nome")
     private String nome;
 
-    @NotNull(message = "Informe a data de nascimento")
-    private Integer data_nascimento;
+    @NotEmpty(message = "Informe a data de nascimento")
+    private String data_nascimento;
 
-    @NotNull(message = "Informe um CPF")
-    private Integer cpf;
+    @NotEmpty(message = "Informe um CPF")
+    private String cpf;
 
-    @NotNull(message = "Informe o RG")
-    private Integer rg;
+    @NotEmpty(message = "Informe o RG")
+    private String rg;
 
     private Perfil perfil;
 
     @NotNull(message = "Informe um telefone")
     private Long telefone;
 
-    @NotEmpty(message = "Informe um e-mail")
+    @NotNull(message = "Informe um e-mail")
     @Email(message = "O e-mail informado é inválido")
     private String email;
 
+    @NotEmpty(message = "Informe a senha de acesso")
     private String senha;
 
     @ManyToMany(mappedBy = "pessoas")
@@ -95,27 +97,27 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Integer getData_nascimento() {
+    public String getData_nascimento() {
         return data_nascimento;
     }
 
-    public void setData_nascimento(Integer data_nascimento) {
+    public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Integer getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(Integer rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 

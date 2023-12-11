@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alteração de Admin</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<div th:replace="fragments/cabecalho :: cabecalhoAdm"></div>
+<div id="formulário" class="container mt-auto">
+    <h1>Cadastro de admin</h1>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${mensagemAlterarAdmin}">
+        <span th:text="${mensagemAlunoSalvo}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form action="#" th:action="@{/administrador/alterarAdmin/{id}(id=${adminAtualizado.id})}" th:object="${adminAtualizado}" method="post">
+        <div class="row">
+            <div class="form-group col" id="coluna-esquerda">
+                <label for="Nome">Nome</label>
+                <input type="text" class="form-control" id="Nome" placeholder="Nome completo do administrador" th:field="*{nome}">
+                <div  th:if="${#fields.hasErrors('nome')}">
+                    <span class="mensagem" th:errors="*{nome}"></span>
+                </div>
+
+                <label for="CPF">CPF</label>
+                <input type="text" class="form-control" id="CPF" placeholder="CPF do administrador" th:field="*{cpf}">
+                <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+
+
+                <label for="RG">RG</label>
+                <input type="text" class="form-control" id="RG" placeholder="Rg do administrador" th:field="*{rg}">
+                <span class="mensagem" th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
+
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Email do administrador" th:field="*{email}">
+                <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+
+                <label for="Telefone">Telefone</label>
+                <input type="text" class="form-control" id="Telefone" placeholder="Telefone do administrador" th:field="*{telefone}">
+                <span class="mensagem" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+            </div>
+
+            <div class="form-group col" id="coluna-direita">
+                <label for="Endereço">Endereço</label>
+                <input type="text" class="form-control" id="Endereço" placeholder="Endereço do administrador" th:field="*{endereco}">
+                <span class="mensagem" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
+
+
+                <label for="Remumeracao">Renumeração</label>
+                <input type="text" class="form-control" placeholder="Renumeração bruta do administrador" id="Remumeracao" th:field="*{renumeracao}"></input>
+                <span class="mensagem" th:if="${#fields.hasErrors('renmeracao')}" th:errors="*{renumeracao}"></span>
+
+                <label for="Senha">Senha</label>
+                <input type="text" class="form-control" id="Senha" placeholder="Senha de cadastro" th:field="*{senha}">
+                <span class="mensagem" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+
+
+                <label for="data-nasc">Data de nascimento</label>
+                <input type="text" class="form-control" id="data-nasc" placeholder="Data de nascimento do administrador" th:field="*{data_nascimento}">
+                <span class="mensagem" th:if="${#fields.hasErrors('data_nascimento')}" th:errors="*{data_nascimento}"></span>
+            </div>
+        </div>
+        <br>
+        <div id="botões" class="container row">
+            <div id="botão enviar" class="col"><button type="submit" class="btn btn-primary">Enviar</button></div>
+            <div id="botão lista" class="col"><a th:href="@{/administrador/listaAlunos}"><button class="btn btn-info" type="button">Voltar a lista</button></a></div>
+
+        </div>
+
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

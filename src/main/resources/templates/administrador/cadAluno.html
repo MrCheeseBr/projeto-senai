@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Aluno</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-    <div th:replace="fragments/cabecalhoAdm :: cabecalhoAdm"></div>
+    <div th:replace="fragments/cabecalho :: cabecalhoAdm"></div>
     <div id="formulário" class="container mt-auto">
         <h1>Cadastro de alunos</h1>
         <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${mensagemAlunoSalvo}">
@@ -18,39 +23,34 @@
         <form action="#" th:action="@{/administrador/salvarAluno}" th:object="${cadAluno}" method="post">
             <div class="row">
                 <div class="form-group col" id="coluna-esquerda">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome completo do estudante" th:field="*{nome}">
-                    <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                    <label for="Nome">Nome</label>
+                    <input type="text" class="form-control" id="Nome" placeholder="Nome completo do estudante" th:field="*{nome}">
+                    <div  th:if="${#fields.hasErrors('nome')}">
+                        <span class="mensagem" th:errors="*{nome}"></span>
+                    </div>
 
                     <label for="CPF">CPF</label>
-                    <input type="number" class="form-control" id="CPF" placeholder="CPF do estudante" th:field="*{cpf}">
+                    <input type="text" class="form-control" id="CPF" placeholder="CPF do estudante" th:field="*{cpf}">
                     <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
 
 
                     <label for="RG">RG</label>
-                    <input type="number" class="form-control" id="RG" placeholder="Rg do estudante" th:field="*{rg}">
+                    <input type="text" class="form-control" id="RG" placeholder="Rg do estudante" th:field="*{rg}">
                     <span class="mensagem" th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
 
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email do estudante" th:field="*{email}">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email" placeholder="Email do estudante" th:field="*{email}">
                     <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 
-                    <label for="perfil">Perfil</label>
-                    <select class="custom-select" id="perfil" th:field="*{perfil}">
-                        <option th:each="perfil : ${ListaPerfil}"
-                                th:value="${perfil}"
-                                th:text="${ListaPerfil}"
-                        >
-                        </option>
-                    </select>
 
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" class="form-control" id="telefone" placeholder="Telefone do estudante" th:field="*{telefone}">
+                    <label for="Telefone">Telefone</label>
+                    <input type="text" class="form-control" id="Telefone" placeholder="Telefone do estudante" th:field="*{telefone}">
                     <span class="mensagem" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
                 </div>
+
                 <div class="form-group col" id="coluna-direita">
-                    <label for="endereço">Endereço</label>
-                    <input type="text" class="form-control" id="endereço" placeholder="Endereço do estudante" th:field="*{endereco}">
+                    <label for="Endereço">Endereço</label>
+                    <input type="text" class="form-control" id="Endereço" placeholder="Endereço do estudante" th:field="*{endereco}">
                     <span class="mensagem" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
 
 
@@ -59,14 +59,21 @@
 
                     <label for="Senha">Senha</label>
                     <input type="text" class="form-control" id="Senha" placeholder="Senha de cadastro" th:field="*{senha}">
+                    <span class="mensagem" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
 
 
                     <label for="data-nasc">Data de nascimento</label>
-                    <input type="date" class="form-control" id="data-nasc" placeholder="Daya de nascimento do estudante" th:field="*{data_nascimento}">
+                    <input type="text" class="form-control" id="data-nasc" placeholder="Data de nascimento do estudante" th:field="*{data_nascimento}">
                     <span class="mensagem" th:if="${#fields.hasErrors('data_nascimento')}" th:errors="*{data_nascimento}"></span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <br>
+            <div id="botões" class="container row">
+                <div id="botão enviar" class="col"><button type="submit" class="btn btn-primary">Enviar</button></div>
+                <div id="botão lista" class="col"><a th:href="@{/administrador/listaAlunos}"><button class="btn btn-info" type="button">Voltar a lista</button></a></div>
+
+            </div>
+
         </form>
     </div>
     <div th:replace="fragments/footer :: footer"></div>

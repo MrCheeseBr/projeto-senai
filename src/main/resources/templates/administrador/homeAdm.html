@@ -5,9 +5,7 @@
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-    <div class="container">
-        <div th:replace="fragments/cabecalhoAdm :: cabecalhoAdm"></div>
-    </div>
+<div th:replace="fragments/cabecalho :: cabecalhoAdm"></div>
     <style>.bg-image-vertical {
         position: relative;
         overflow: hidden;
@@ -36,14 +34,13 @@
                                 <button class="btn btn-info btn-lg btn-block" type="button">Turmas</button>
                             </div>
                             <div class="pt-1 mb-4">
-                                <a th:href="@{/administrador/cadastrarAluno}"><button class="btn btn-info btn-lg btn-block" type="button">Alunos</button></a>
+                                <a th:href="@{/administrador/listaAlunos}"><button class="btn btn-info btn-lg btn-block" type="button">Alunos</button></a>
                             </div>
                             <div class="pt-1 mb-4">
                                 <button class="btn btn-info btn-lg btn-block" type="button">Professores</button>
                             </div>
                             <div class="pt-1 mb-4">
-                                <button class="btn btn-info btn-lg btn-block" type="button">Administradores</button>
-                            </div>
+                                <a th:href="@{/administrador/listaAdministrador}"><button class="btn btn-info btn-lg btn-block" type="button">Administradores</button></a>                            </div>
                         </form>
 
                     </div>
