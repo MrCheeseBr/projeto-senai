@@ -3,18 +3,13 @@ package sp.senai.br.educati.intelect.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import sp.senai.br.educati.intelect.enums.Cursos;
-import sp.senai.br.educati.intelect.enums.PeriodoTurmas;
-
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Turmas {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,18 +19,17 @@ public class Turmas {
     private String nome;
 
     @NotEmpty(message = "Informe um período")
-    private PeriodoTurmas periodoTurmas;
+    private String periodoTurmas;
 
     private String descricao;
 
     @NotEmpty(message = "Informe a data de início")
-    private Integer dataInicio;
+    private String dataInicio;
 
     @NotEmpty(message = "Informe a data de conclusão")
     private String dataConclusao;
 
-    @NotEmpty(message = "Informe o curso da turma")
-    private Cursos curso;
+    private String curso;
 
     @ManyToMany
     @JoinTable(
@@ -48,31 +42,68 @@ public class Turmas {
 
     //get and setters
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
 
-    public List<Pessoa> getPessoas() {
-        return pessoas;
-    }
-
     public void setPessoas(List<Pessoa> pessoas) {
         this.pessoas = pessoas;
     }
 
-    public void addPessoa(Pessoa pessoa){
-        pessoa.getTurmas().add(this);
-        this.pessoas.add(pessoa);
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void removePessoa(Pessoa pessoa){
-        pessoa.getTurmas().remove(this);
-        this.pessoas.remove(pessoa);
+    public void setPeriodoTurmas(String periodoTurmas) {
+        this.periodoTurmas = periodoTurmas;
     }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDataConclusao(String dataConclusao) {
+        this.dataConclusao = dataConclusao;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getPeriodoTurmas() {
+        return periodoTurmas;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public String getDataConclusao() {
+        return dataConclusao;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
 }

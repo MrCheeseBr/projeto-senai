@@ -1,7 +1,7 @@
 package sp.senai.br.educati.intelect.models;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
+
 import sp.senai.br.educati.intelect.enums.Perfil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,10 +9,8 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 @Data

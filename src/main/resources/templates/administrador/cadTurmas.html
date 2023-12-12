@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Turma</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<div th:replace="fragments/cabecalho :: cabecalhoAdm"></div>
+<div id="formulário" class="container mt-auto">
+    <h1>Cadastro de Turma</h1>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${mensagemTurmaSalva}">
+        <span th:text="${mensagemTurmaSalva}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form action="#" th:action="@{/administrador/salvarTurmas}" th:object="${cadTurma}" method="post">
+        <div>
+
+            <div class="form-group" id="coluna-esquerda">
+                <label for="Curso">Curso</label>
+                <input type="text" class="form-control" id="Curso" placeholder="Curso da turma" th:field="*{curso}">
+                <div  th:if="${#fields.hasErrors('curso')}">
+                    <span class="mensagem" th:errors="*{curso}"></span>
+                </div>
+
+                <label for="data-ini">Data de início</label>
+                <input type="text" class="form-control" id="data-ini" placeholder="Início do curso" th:field="*{dataInicio}">
+                <span class="mensagem" th:if="${#fields.hasErrors('dataInicio')}" th:errors="*{dataInicio}"></span>
+
+
+                <label for="data-concl">Data de fechamento</label>
+                <input type="text" class="form-control" id="data-concl" placeholder="Fechamento do curso" th:field="*{dataConclusao}">
+                <span class="mensagem" th:if="${#fields.hasErrors('dataConclusao')}" th:errors="*{dataConclusao}"></span>
+
+                <label for="Descri">Descrição</label>
+                <input type="text" class="form-control" id="Descri" placeholder="Descrição do curso " th:field="*{descricao}">
+                <span class="mensagem" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+
+
+                <label for="Peri">Período</label>
+                <input type="text" class="form-control" id="Peri" placeholder="Período do curso" th:field="*{periodoTurmas}">
+                <span class="mensagem" th:if="${#fields.hasErrors('periodoTurmas')}" th:errors="*{periodoTurmas}"></span>
+            </div>
+        </div>
+        <br>
+        <div id="botões" class="container row">
+            <div id="botão enviar" class="col"><button type="submit" class="btn btn-primary">Enviar</button></div>
+            <div id="botão lista" class="col"><a th:href="@{/administrador/listaTurmas}"><button class="btn btn-info" type="button">Voltar a lista</button></a></div>
+
+        </div>
+
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

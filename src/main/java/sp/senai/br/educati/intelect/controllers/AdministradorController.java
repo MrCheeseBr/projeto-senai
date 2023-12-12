@@ -8,13 +8,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import sp.senai.br.educati.intelect.models.*;
 import sp.senai.br.educati.intelect.repository.AdministradorRepository;
 import sp.senai.br.educati.intelect.repository.AlunoRepository;
 import sp.senai.br.educati.intelect.repository.ProfessorRepository;
 import sp.senai.br.educati.intelect.repository.TurmasRepository;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Controller
@@ -62,8 +63,8 @@ public class AdministradorController {
     }
 
     @GetMapping("/cadastrarTurmas")
-    public String cadastrarTurmas(Model model){
-        model.addAttribute("cadTurmas", new Turmas());
+    public String cadastrarTurmas(Model model ){
+        model.addAttribute("cadTurma", new Turmas());
 
         return "/administrador/cadTurmas";
     }
@@ -354,7 +355,7 @@ public class AdministradorController {
         Turmas turmas= turmasRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido"));
 
-        model.addAttribute("alterarTurmas", turmas);
+        model.addAttribute("turmaAtualizada", turmas);
 
         return "/administrador/alterarTurmas";
     }
