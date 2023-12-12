@@ -56,7 +56,7 @@
 
                 <label for="Remumeracao">Renumeração</label>
                 <input type="text" class="form-control" placeholder="Renumeração bruta do administrador" id="Remumeracao" th:field="*{renumeracao}"></input>
-                <span class="mensagem" th:if="${#fields.hasErrors('renmeracao')}" th:errors="*{renumeracao}"></span>
+                <span class="mensagem" th:if="${#fields.hasErrors('renumeracao')}" th:errors="*{renumeracao}"></span>
 
                 <label for="Senha">Senha</label>
                 <input type="text" class="form-control" id="Senha" placeholder="Senha de cadastro" th:field="*{senha}">

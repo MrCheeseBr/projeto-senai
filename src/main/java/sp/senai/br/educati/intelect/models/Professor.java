@@ -2,6 +2,7 @@ package sp.senai.br.educati.intelect.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,32 +14,20 @@ import java.util.ArrayList;
 @Data
 @Entity
 @DiscriminatorValue("P")
-public class Professor extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Professor extends Pessoa{
 
     public Professor(){
         this.setPerfil(Perfil.PROFESSOR);
     }
 
-    @NotEmpty(message = "Informe a renumeração")
+    @NotNull(message = "Informe a renumeração")
     private Long renumeracao;
 
-    @NotEmpty(message = "Informe a turma")
     @ManyToMany(mappedBy = "pessoas")
     private ArrayList<Turmas> turmas = new ArrayList<Turmas>();
 
     //get and setters
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getRenumeracao() {
         return renumeracao;

@@ -37,7 +37,7 @@
 
             <!-- Recurso do Themyleaf. Percorre a lista de alunos e preenche a tabela -->
                 <tr th:each="aluno : ${ListaAlunos}">
-                    <td><span th:text="${aluno.id}"> Nome </span></td>
+                    <td><span th:text="${aluno.id}"> Id </span></td>
                     <td><span th:text="${aluno.matricula}"> Matrícula </span></td>
                     <td><span th:text="${aluno.nome}"> Nome </span></td>
                     <td><span th:text="${aluno.email}"> Email </span></td>

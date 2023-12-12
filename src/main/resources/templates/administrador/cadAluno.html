@@ -22,6 +22,9 @@
         </div>
         <form action="#" th:action="@{/administrador/salvarAluno}" th:object="${cadAluno}" method="post">
             <div class="row">
+
+                <input type="hidden" th:field="*{matricula}"/>
+
                 <div class="form-group col" id="coluna-esquerda">
                     <label for="Nome">Nome</label>
                     <input type="text" class="form-control" id="Nome" placeholder="Nome completo do estudante" th:field="*{nome}">

@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Listagem de Admin</title>
+    <title>Listagem de Professores</title>
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-<div th:replace="fragments/cabecalho :: cabecalhoAdm"></div>
+<div th:replace="fragments/cabecalho :: cabecalhoAdm" class="mb-0"></div>
 <div class="container mt-5">
     <div class="container mt-5 row position-relative">
-        <div class="col"><h2>Listagem de admin</h2></div>
-        <div class="col"><a th:href="@{/administrador/cadastrarAdmin}"><button class="btn btn-info position-absolute end-0" type="button">Cadastrar Admin</button></a></div>
+        <div class="col"><h2>Listagem de professores</h2></div>
+        <div class="col"><a th:href="@{/administrador/cadastrarProfessores}"><button class="btn btn-info position-absolute end-0" type="button">Cadastrar Professor</button></a></div>
     </div>
-    <div id="mensagem exclusão" class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${mensagemDelAdmin}">
-        <span th:text="${mensagemDelAdmin}"></span>
+    <div id="mensagem exclusão" class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${mensagemDelProfessores}">
+        <span th:text="${mensagemDelProfessores}"></span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -22,6 +22,7 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>Turma</th>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Ações</th>
@@ -30,26 +31,27 @@
         <tbody>
 
         <!-- Recurso do Themyleaf. Verifica se a lista de alunos está vazia -->
-        <tr th:if="${listaAdmin.empty}">
+        <tr th:if="${listaProfessores.empty}">
             <td colspan="2">Nenhum registro encontrado</td>
         </tr>
 
         <!-- Recurso do Themyleaf. Percorre a lista de alunos e preenche a tabela -->
-        <tr th:each="admin : ${listaAdmin}">
-            <td><span th:text="${admin.id}"> Id </span></td>
-            <td><span th:text="${admin.nome}"> Nome </span></td>
-            <td><span th:text="${admin.email}"> Email </span></td>
+        <tr th:each="prof : ${listaProfessores}">
+            <td><span th:text="${prof.id}"> Id </span></td>
+            <td><span th:text="${prof.turmas}">Turmas</span></td>
+            <td><span th:text="${prof.nome}"> Nome </span></td>
+            <td><span th:text="${prof.email}"> Email </span></td>
             <td>
 
                 <!-- Recurso do Themyleaf. Carrega o id do aluno para ser alterado -->
                 <a class="btn btn-outline-primary btn-sm"
-                   th:href="@{/administrador/alterarAdmin/{id}(id=${admin.id})}">Editar
+                   th:href="@{/administrador/alterarProfessor/{id}(id=${prof.id})}">Editar
                 </a>
 
                 <!-- Recurso do Themyleaf. Carrega o id do aluno para ser excluído -->
                 <a class="btn btn-outline-danger btn-sm"
-                   th:href="@{/administrador/excluirAdministrador/{id}(id=${admin.id})}"
-                   th:data-confirm-delete="|Você gostaria de apagar ${admin.nome}?|"
+                   th:href="@{/administrador/excluirProfessor/{id}(id=${prof.id})}"
+                   th:data-confirm-delete="|Você gostaria de apagar ${prof.nome}?|"
                    onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
                     Apagar
                 </a>

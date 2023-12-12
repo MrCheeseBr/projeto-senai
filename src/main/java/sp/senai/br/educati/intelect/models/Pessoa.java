@@ -1,6 +1,7 @@
 package sp.senai.br.educati.intelect.models;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 import sp.senai.br.educati.intelect.enums.Perfil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -160,4 +161,5 @@ public class Pessoa {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
 }

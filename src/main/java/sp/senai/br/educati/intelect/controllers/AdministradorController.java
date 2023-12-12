@@ -102,7 +102,7 @@ public class AdministradorController {
         if(result.hasErrors()){
             return "/administrador/cadProfessor";
         }
-        //verifica se turmas foram selecionadas
+        /*verifica se turmas foram selecionadas
         if(professor.getTurmas()!= null){
             Turmas turmasBanco = turmasRepository.findById(professor.getTurmas().get(0).getId()).orElseThrow(()
                     -> new IllegalArgumentException("ID Inválido")
@@ -114,7 +114,7 @@ public class AdministradorController {
             //adiciona turma ao professor
             turmasBanco.addPessoa(professor);
 
-        }
+        }*/
         professorRepository.save(professor);
         attributes.addFlashAttribute("mensagemProfessorSalvo", "Professor salvo com sucesso");
         return "redirect:/administrador/cadastrarProfessores";
@@ -200,7 +200,7 @@ public class AdministradorController {
         professorRepository.delete(professor);
 
         attributes.addFlashAttribute("mensagemDelProfessores", "Professor excluído com sucesso!");
-        return "redirect:/administrador/excluirProfessores";
+        return "redirect:/administrador/listaProfessores";
     }
 
     @GetMapping("/excluirAdministrador/{id}")
@@ -314,7 +314,7 @@ public class AdministradorController {
         Professor professor= professorRepository.findById(id).orElseThrow(()
                 -> new IllegalArgumentException("ID Inválido"));
 
-        model.addAttribute("alterarProfessor", professor);
+        model.addAttribute("profAtualizado", professor);
 
         return "/administrador/alterarProfessor";
     }
@@ -345,7 +345,7 @@ public class AdministradorController {
 
         attributes.addFlashAttribute("mensagemAlterarProfessor", "Professor atualizado com sucesso!");
 
-        return "redirect:/administrador/alterarProfessor";
+        return "redirect:/administrador/listaProfessores";
     }
 
     @GetMapping("/alterarTurmas/{id}")

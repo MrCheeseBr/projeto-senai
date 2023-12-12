@@ -17,6 +17,9 @@
                 </button>
             </div>
             <form action="#" th:action="@{/administrador/alterarAluno/{id}(id=${alunoAtualizado.id})}" th:object="${alunoAtualizado}" method="post">
+
+                <input type="hidden" th:field="*{matricula}"/>
+
                 <div class="row">
                     <div class="form-group col" id="coluna-esquerda">
                         <label for="Nome">Nome</label>
